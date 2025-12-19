@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_check.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aboussab <aboussab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/18 12:06:15 by aboussab          #+#    #+#             */
-/*   Updated: 2025/12/19 00:21:08 by aboussab         ###   ########.fr       */
+/*   Created: 2025/12/18 14:59:54 by aboussab          #+#    #+#             */
+/*   Updated: 2025/12/18 15:18:40 by aboussab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
 
-int	ft_putchar(char c)
+
+int	ft_check(char c)
 {
-	write(1, &c, 1);
-	return (1);
+	char	*b;
+	int	i;
+
+	i = 0;
+	b = "cspdiuxX%";
+	while(b[i])
+	{
+		if (c == *(b + i))
+			return(1);
+		i++;
+	}
+	return (0);
 }

@@ -1,19 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_putnmbr_decimal.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aboussab <aboussab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/18 12:06:15 by aboussab          #+#    #+#             */
-/*   Updated: 2025/12/19 00:21:08 by aboussab         ###   ########.fr       */
+/*   Created: 2025/12/18 14:27:28 by aboussab          #+#    #+#             */
+/*   Updated: 2025/12/18 16:51:28 by aboussab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putchar(char c)
+int	ft_putnbr(int n)
 {
+	char	c;
+	int	nmb;
+
+	if (n == INT_MIN)
+	{
+		write(1, "-2147483648", 11);
+		return ;
+	}
+	if (n < 0)
+	{
+		write(1, "-", 1);
+		n = -n;
+	}
+	while ((n / 10) > 0)
+	{
+		
+		c = (n % 10) + '0';
+		write(1, &c, 1);
+		
+	}
+		
+	c = (n % 10) + '0';
 	write(1, &c, 1);
-	return (1);
 }
