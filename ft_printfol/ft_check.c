@@ -6,23 +6,23 @@
 /*   By: aboussab <aboussab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 14:59:54 by aboussab          #+#    #+#             */
-/*   Updated: 2025/12/18 15:18:40 by aboussab         ###   ########.fr       */
+/*   Updated: 2025/12/20 13:25:12 by aboussab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
+#include "ft_printf.h"
 
 int	ft_check(char c)
 {
 	char	*b;
-	int	i;
+	int		i;
 
 	i = 0;
 	b = "cspdiuxX%";
-	while(b[i])
+	while (b[i])
 	{
 		if (c == *(b + i))
-			return(1);
+			return (1);
 		i++;
 	}
 	return (0);

@@ -6,21 +6,17 @@
 /*   By: aboussab <aboussab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 12:06:31 by aboussab          #+#    #+#             */
-/*   Updated: 2025/12/19 01:55:40 by aboussab         ###   ########.fr       */
+/*   Updated: 2025/12/20 14:20:06 by aboussab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
-
 int	ft_putnbr(int n)
 {
 	char	c;
-	int	i;
-	
+	int		i;
+
 	i = 0;
 	if (n == INT_MIN)
 	{
@@ -29,20 +25,12 @@ int	ft_putnbr(int n)
 	}
 	if (n < 0)
 	{
-		write(1, "-", 1);
+		i += write(1, "-", 1);
 		n = -n;
 	}
 	if ((n / 10) > 0)
-		ft_putnbr((n / 10));
+		i += ft_putnbr((n / 10));
 	c = (n % 10) + '0';
-	write(1, &c, 1);
-	return(++i);
-}
-
-#include <stdio.h>
-
-int main()
-{
-	printf("%d",ft_putnbr(123));
-
+	i += write(1, &c, 1);
+	return (i);
 }

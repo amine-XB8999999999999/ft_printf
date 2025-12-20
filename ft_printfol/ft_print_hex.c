@@ -1,40 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnmbr_decimal.c                               :+:      :+:    :+:   */
+/*   ft_print_hex.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aboussab <aboussab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/18 14:27:28 by aboussab          #+#    #+#             */
-/*   Updated: 2025/12/18 16:51:28 by aboussab         ###   ########.fr       */
+/*   Created: 2025/12/20 10:21:23 by aboussab          #+#    #+#             */
+/*   Updated: 2025/12/20 14:28:48 by aboussab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnbr(int n)
+int	ft_print_hex(unsigned int m)
 {
+	int		i;
 	char	c;
-	int	nmb;
 
-	if (n == INT_MIN)
+	i = 0;
+	if (m >= 16)
 	{
-		write(1, "-2147483648", 11);
-		return ;
+		i += ft_print_hex(m / 16);
+		i += ft_print_hex(m % 16);
 	}
-	if (n < 0)
+	else if (m >= 10)
 	{
-		write(1, "-", 1);
-		n = -n;
+		c = (m - 10) + 'A';
+		i += write(1, &c, 1);
 	}
-	while ((n / 10) > 0)
+	else
 	{
-		
-		c = (n % 10) + '0';
-		write(1, &c, 1);
-		
+		c = (m + '0');
+		i += write(1, &c, 1);
 	}
-		
-	c = (n % 10) + '0';
-	write(1, &c, 1);
+	return (i);
 }
